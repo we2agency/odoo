@@ -5,6 +5,12 @@ phases:
     runtime-versions:
       python: 3.10
     commands:
+      - echo "Updating OS and installing system dependencies"
+      - yum update -y
+      - yum install -y gcc openssl-devel bzip2-devel libffi-devel
+      - yum install -y postgresql-devel  # for psycopg2
+      - yum install -y libxml2-devel libxslt-devel  # for lxml
+      - yum install -y libjpeg-devel zlib-devel  # for Pillow
       - echo "Installing Python and pip"
       - python -m ensurepip --upgrade
       - python -m pip install --upgrade pip setuptools wheel
